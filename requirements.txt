@@ -1,1 +1,8 @@
 flask
+requests==2.18.4
+pytest
+pytest-html
+pytest-rerunfailures
+pytest-xdist
+pytest-sugar
+pytest-ordering

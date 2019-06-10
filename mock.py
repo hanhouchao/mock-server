@@ -38,6 +38,10 @@ def update_task(name):
 @app.route('/api/tasks/<string:name>', methods=['DELETE'])
 def delete_task(name):
     if len(name) > 0 and name in names:
+        names.remove(name)
+        for content in data:
+            if content["name"] == name:
+                data.remove(content)
         return make_response(jsonify(data), 204)
     else:
         abort(404)
@@ -49,12 +53,14 @@ def create_task():
         return make_response(jsonify(data), 200)
     name = request.json['name']
     if name in names:
-        return make_response(task_exist, 400)
+        return make_response(jsonify(task_exist), 400)
     else:
         names.append(name)
         data.append(request.json)
-    return make_response(request.json, 201)
+    from time import sleep
+    sleep(3)
+    return make_response(jsonify(request.json), 201)
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=80, debug=True)
+    app.run(host='127.0.0.1', port=8080, debug=True)

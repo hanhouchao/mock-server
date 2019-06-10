@@ -1,0 +1,12 @@
+.cache
+*.pyc
+__pycache__
+.idea
+report
+report.tar
+temp_data
+.pytest_cache
+.DS_Store
+venv
+Pipfile*
+./test_case/pipeline_new/test2.py
